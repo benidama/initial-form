@@ -3,106 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registration</title>
-    <style>
-      .error {
-        color: red;
-      }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h2>User Registration Form</h2>
-    <form id="registrationForm" action="/submit-form" method="POST">
-      <div>
-        <label for="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          required
-          minlength="3"
-          maxlength="15"
-        />
-        <span class="error" id="usernameError"></span>
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <span class="error" id="emailError"></span>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          required
-          minlength="6"
-        />
-        <span class="error" id="passwordError"></span>
-      </div>
-      <div>
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" min="18" max="99" />
-        <span class="error" id="ageError"></span>
-      </div>
-      <div>
-        <input type="submit" value="Register" />
-      </div>
-    </form>
+    <div class="main-container">
+      <h1>Register with us</h1>
 
-    <script>
-      const form = document.getElementById("registrationForm");
+      <form action="#agasha.php" id="form">
+        <div class="first_name">
+          <label for="first_name">Enter first name:</label><br />
+          <input type="text" id="first_name" required />
+          <p id="first_name_error"></p>
+        </div>
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form submission
+        <div class="last_name">
+          <label for="last_name">Enter last name:</label><br />
+          <input type="text" id="last_name" required />
+          <p id="last_name_error"></p>
+        </div>
 
-        // Validate username
-        const usernameInput = document.getElementById("username");
-        const usernameError = document.getElementById("usernameError");
-        if (usernameInput.value.length < 3) {
-          usernameError.textContent =
-            "Username must be at least 3 characters long.";
-          return;
-        } else {
-          usernameError.textContent = "";
-        }
-        // Validate email
-        const emailInput = document.getElementById("email");
-        const emailError = document.getElementById("emailError");
-        if (
-          !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailInput.value)
-        ) {
-          emailError.textContent = "Please enter a valid email address.";
-          return;
-        } else {
-          emailError.textContent = "";
-        }
+        <div class="age">
+          <label for="age">Enter your age</label><br />
+          <input type="number" id="age" required />
+          <p id="age_error"></p>
+        </div>
 
-        // Validate password
-        const passwordInput = document.getElementById("password");
-        const passwordError = document.getElementById("passwordError");
-        if (passwordInput.value.length < 6) {
-          passwordError.textContent =
-            "Password must be at least 6 characters long.";
-          return;
-        } else {
-          passwordError.textContent = "";
-        }
+        <div class="email">
+          <label for="email">Enter email:</label><br />
+          <input type="email" id="email" required />
+          <p id="email_error"></p>
+        </div>
 
-        // Validate age
-        const ageInput = document.getElementById("age");
-        const ageError = document.getElementById("ageError");
-        if (ageInput.value < 18 || ageInput.value > 99) {
-          ageError.textContent = "Age must be between 18 and 99.";
-          return;
-        } else {
-          ageError.textContent = "";
-        }
+        <div class="password">
+          <label for="password">Enter password:</label><br />
+          <input type="password" id="password" required />
+          <p id="password_error"></p>
+        </div>
 
-        // If all validations pass, submit the form
-        form.submit();
-      });
-    </script>
+        <div class="confirm_password" required>
+          <label for="confirm_password">Confirm password:</label><br />
+          <input type="password" id="confirm_password" />
+          <p id="confirm_password_error"></p>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">Please agree to our terms and conditions</label>
+          <p id="checkbox_error"></p>
+        </div>
+
+        <button id="register_btn">Register</button>
+      </form>
+    </div>
+    <script src="form-vald.js"></script>
   </body>
 </html>
